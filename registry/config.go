@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"regexp"
 	"strings"
+	"os"
 
 	"github.com/docker/docker/opts"
 	flag "github.com/docker/docker/pkg/mflag"
@@ -37,10 +38,14 @@ var (
 )
 
 func IndexServerAddress() string {
+	s:=os.Getenv("INDEXSERVER")
+	if s!="" {return s}
 	return INDEXSERVER
 }
 
 func IndexServerName() string {
+	s:=os.Getenv("INDEXNAME")
+	if s!="" {return s}
 	return INDEXNAME
 }
 
